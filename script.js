@@ -11,6 +11,113 @@ const CONFIG = {
 };
 
 
+/* =========================================
+   📧 SEND NOTIFICATION
+========================================= */
+
+async function sendNotification(choice) {
+
+    const isYes =
+        choice === "YES";
+
+
+    const subject =
+        isYes
+            ? "❤️ Chandani clicked YES!"
+            : "😐 Chandani clicked NO!";
+
+
+    const message =
+        isYes
+
+            ? `
+Chandani clicked YES on Dev's birthday proposal website.
+
+Choice: YES ❤️
+
+Time:
+${new Date().toLocaleString()}
+`
+
+            : `
+Chandani clicked NO on Dev's birthday proposal website.
+
+Choice: NO 😐
+
+Time:
+${new Date().toLocaleString()}
+`;
+
+
+    try {
+
+        const result =
+            await fetch(
+                NOTIFICATION_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            subject: subject,
+
+                            name: CONFIG.herName,
+
+                            choice: choice,
+
+                            message: message,
+
+                            clickedAt:
+                                new Date()
+                                    .toLocaleString()
+
+                        })
+
+                }
+            );
+
+
+        if (result.ok) {
+
+            console.log(
+                "✅ Notification sent successfully!"
+            );
+
+        } else {
+
+            console.error(
+                "❌ Formspree error:",
+                result.status
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Notification failed:",
+            error
+        );
+
+    }
+
+}
+
+
 
 /* =========================================
    INITIALIZE
