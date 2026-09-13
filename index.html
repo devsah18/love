@@ -1,47 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="theme-color" content="#0d0d14">
+    <meta
+        name="theme-color"
+        content="#0b0b12"
+    >
 
-    <meta name="description"
-          content="A special birthday surprise">
+    <meta
+        name="description"
+        content="A special birthday surprise ❤️"
+    >
 
     <title>A Special Birthday ❤️</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <!-- Floating background particles -->
-    <div class="particles" id="particles"></div>
+    <!-- ==============================
+         BACKGROUND PARTICLES
+    =============================== -->
 
-    <!-- =========================
-         INTRO
-    ========================== -->
+    <div
+        class="particles"
+        id="particles"
+    ></div>
+
+
+    <!-- ==============================
+         MAIN
+    =============================== -->
 
     <main>
 
-        <section class="screen active" id="intro">
+
+        <!-- ==========================
+             INTRO SCREEN
+        =========================== -->
+
+        <section
+            class="screen active"
+            id="intro"
+        >
 
             <div class="intro-card">
 
-                <p class="small-label">A little surprise for</p>
-
-                <h1 id="introName">Her Name</h1>
-
-                <p class="intro-text">
-                    I made something small for your birthday.
-                    Take a moment and open it when you're ready. ❤️
+                <p class="small-label">
+                    A little surprise for
                 </p>
 
-                <button class="primary-btn" onclick="openSurprise()">
+
+                <h1 id="introName">
+                    Her Name
+                </h1>
+
+
+                <p class="intro-text">
+
+                    I made something small
+                    for your birthday.
+
+                    <br>
+
+                    Take a moment and open it
+                    when you're ready. ❤️
+
+                </p>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="openSurprise()"
+                >
+
                     Open your surprise
+
                 </button>
 
             </div>
@@ -49,32 +94,57 @@
         </section>
 
 
-        <!-- =========================
-             BIRTHDAY
-        ========================== -->
 
-        <section class="screen" id="birthday">
+        <!-- ==========================
+             BIRTHDAY SCREEN
+        =========================== -->
+
+        <section
+            class="screen"
+            id="birthday"
+        >
 
             <div class="content">
 
-                <span class="eyebrow">TODAY IS YOUR DAY</span>
+                <span class="eyebrow">
+                    TODAY IS YOUR DAY
+                </span>
+
 
                 <h2>
+
                     Happy Birthday,
-                    <span id="birthdayName">Her Name</span> 🎂
+
+                    <span id="birthdayName">
+                        Her Name
+                    </span>
+
+                    🎂
+
                 </h2>
 
+
                 <p class="message">
-                    I hope this year brings you happiness,
-                    good memories, and plenty of reasons to smile.
+
+                    I hope this year brings you
+                    happiness, good memories,
+                    and plenty of reasons to smile.
+
                 </p>
+
 
                 <div class="cake">
                     🎂
                 </div>
 
-                <button class="primary-btn" onclick="showGift()">
+
+                <button
+                    class="primary-btn"
+                    onclick="showGift()"
+                >
+
                     There's something for you 🎁
+
                 </button>
 
             </div>
@@ -82,24 +152,38 @@
         </section>
 
 
-        <!-- =========================
-             GIFT
-        ========================== -->
 
-        <section class="screen" id="gift">
+        <!-- ==========================
+             GIFT SCREEN
+        =========================== -->
+
+        <section
+            class="screen"
+            id="gift"
+        >
 
             <div class="content">
 
-                <span class="eyebrow">A LITTLE GIFT</span>
+                <span class="eyebrow">
+                    A LITTLE GIFT
+                </span>
+
 
                 <h2>
+
                     Something small,
                     just for you.
+
                 </h2>
 
-                <div class="gift-box"
-                     onclick="openGift()"
-                     id="giftBox">
+
+                <!-- GIFT -->
+
+                <div
+                    class="gift-box"
+                    id="giftBox"
+                    onclick="openGift()"
+                >
 
                     <div class="gift-lid"></div>
 
@@ -109,24 +193,47 @@
 
                 </div>
 
-                <p class="hint">
+
+                <p
+                    class="hint"
+                    id="giftHint"
+                >
+
                     Tap the gift
+
                 </p>
 
-                <div class="hidden-message" id="giftMessage">
+
+                <!-- HIDDEN MESSAGE -->
+
+                <div
+                    class="hidden-message"
+                    id="giftMessage"
+                >
 
                     <p>
-                        Some people make ordinary days
-                        a little better just by being around.
+
+                        Some people make
+                        ordinary days a little better
+                        just by being around.
+
                     </p>
 
+
                     <p>
+
                         You're one of those people.
+
                     </p>
 
-                    <button class="primary-btn"
-                            onclick="showStory()">
+
+                    <button
+                        class="primary-btn"
+                        onclick="showStory()"
+                    >
+
                         Continue →
+
                     </button>
 
                 </div>
@@ -136,77 +243,131 @@
         </section>
 
 
-        <!-- =========================
-             STORY
-        ========================== -->
 
-        <section class="screen" id="story">
+        <!-- ==========================
+             STORY SCREEN
+        =========================== -->
+
+        <section
+            class="screen"
+            id="story"
+        >
 
             <div class="content">
 
-                <span class="eyebrow">OUR LITTLE STORY</span>
+                <span class="eyebrow">
+                    OUR LITTLE STORY
+                </span>
+
 
                 <h2>
-                    A few things I've appreciated
-                    about our friendship.
+
+                    A few things I've
+                    appreciated about
+                    our friendship.
+
                 </h2>
+
 
                 <div class="timeline">
 
+
+                    <!-- ITEM 1 -->
+
                     <div class="timeline-item">
 
-                        <span>01</span>
+                        <span>
+                            01
+                        </span>
+
 
                         <div>
-                            <h3>The beginning</h3>
+
+                            <h3>
+                                The beginning
+                            </h3>
+
 
                             <p>
-                                Somewhere along the way,
-                                talking to you became one of
-                                my favorite things.
+
+                                Somewhere along
+                                the way, talking to you
+                                became one of my
+                                favorite things.
+
                             </p>
+
                         </div>
 
                     </div>
 
 
+
+                    <!-- ITEM 2 -->
+
                     <div class="timeline-item">
 
-                        <span>02</span>
+                        <span>
+                            02
+                        </span>
+
 
                         <div>
-                            <h3>The little moments</h3>
+
+                            <h3>
+                                The little moments
+                            </h3>
+
 
                             <p>
+
                                 The random conversations,
                                 jokes and small moments
                                 somehow became memorable.
+
                             </p>
+
                         </div>
 
                     </div>
 
 
+
+                    <!-- ITEM 3 -->
+
                     <div class="timeline-item">
 
-                        <span>03</span>
+                        <span>
+                            03
+                        </span>
+
 
                         <div>
-                            <h3>Something changed</h3>
+
+                            <h3>
+                                Something changed
+                            </h3>
+
 
                             <p>
-                                At some point, I realized
-                                that I didn't just enjoy
-                                talking to you.
+
+                                At some point,
+                                I realized that I didn't
+                                just enjoy talking to you.
+
                             </p>
+
                         </div>
 
                     </div>
 
                 </div>
 
-                <button class="primary-btn"
-                        onclick="showSecret()">
+
+                <button
+                    class="primary-btn"
+                    onclick="showSecret()"
+                >
 
                     One more thing →
 
@@ -217,15 +378,22 @@
         </section>
 
 
-        <!-- =========================
-             SECRET MESSAGE
-        ========================== -->
 
-        <section class="screen" id="secret">
+        <!-- ==========================
+             SECRET LETTER
+        =========================== -->
+
+        <section
+            class="screen"
+            id="secret"
+        >
 
             <div class="content">
 
-                <span class="eyebrow">ONE LAST SECRET</span>
+                <span class="eyebrow">
+                    ONE LAST SECRET
+                </span>
+
 
                 <div class="letter">
 
@@ -233,24 +401,37 @@
                         💌
                     </div>
 
-                    <p>
-                        I've been thinking about whether
-                        I should tell you this.
-                    </p>
 
                     <p>
-                        You're someone I genuinely value,
-                        and I don't want this to change
-                        the friendship we have.
+
+                        I've been thinking about
+                        whether I should tell you this.
+
                     </p>
+
 
                     <p>
-                        But keeping it to myself didn't
-                        feel right either.
+
+                        You're someone I genuinely
+                        value, and I don't want this
+                        to change the friendship
+                        we have.
+
                     </p>
 
-                    <button class="primary-btn"
-                            onclick="showProposal()">
+
+                    <p>
+
+                        But keeping it to myself
+                        didn't feel right either.
+
+                    </p>
+
+
+                    <button
+                        class="primary-btn"
+                        onclick="showProposal()"
+                    >
 
                         Read the last part ❤️
 
@@ -263,26 +444,40 @@
         </section>
 
 
-        <!-- =========================
+
+        <!-- ==========================
              PROPOSAL
-        ========================== -->
+        =========================== -->
 
-        <section class="screen" id="proposal">
+        <section
+            class="screen"
+            id="proposal"
+        >
 
-            <div class="content proposal-content">
+            <div
+                class="content proposal-content"
+            >
 
                 <div class="heart">
                     ❤️
                 </div>
 
+
                 <span class="eyebrow">
                     SOMETHING HONEST
                 </span>
 
+
                 <h2>
-                    <span id="proposalName">Her Name</span>,
+
+                    <span id="proposalName">
+                        Her Name
+                    </span>,
+
                     I like you.
+
                 </h2>
+
 
                 <p class="proposal-text">
 
@@ -290,42 +485,68 @@
 
                     <br><br>
 
-                    I don't know exactly how you feel,
-                    and I don't expect you to answer
-                    immediately.
+                    I don't know exactly how
+                    you feel, and I don't expect
+                    you to answer immediately.
 
                     <br><br>
 
-                    I just wanted to be honest with you.
+                    I just wanted to be honest
+                    with you.
 
                 </p>
 
+
                 <h3 class="question">
-                    Would you go on a date with me? ❤️
+
+                    Would you go on a date
+                    with me? ❤️
+
                 </h3>
 
-                <div class="choice-buttons">
 
-                    <button class="yes-btn"
-                            onclick="sayYes()">
+
+                <!-- ======================
+                     BUTTON AREA
+                ======================= -->
+
+                <div
+                    class="choice-area"
+                    id="choiceArea"
+                >
+
+
+                    <button
+                        class="yes-btn"
+                        onclick="sayYes()"
+                    >
 
                         Yes ❤️
 
                     </button>
 
-                    <button class="maybe-btn"
-                            onclick="needTime()">
 
-                        I need some time
+                    <button
+                        class="no-btn"
+                        id="noBtn"
+                        onclick="runAway()"
+                    >
+
+                        No 😐
 
                     </button>
 
-                </div>
-
-                <div class="response"
-                     id="response">
 
                 </div>
+
+
+                <!-- RANDOM MESSAGE -->
+
+                <div
+                    class="response"
+                    id="response"
+                ></div>
+
 
             </div>
 
@@ -334,14 +555,25 @@
     </main>
 
 
-    <!-- Footer -->
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
 
     <footer>
-        Made with ❤️ for <span id="footerName">Her Name</span>
+
+        Made with ❤️ for
+
+        <span id="footerName">
+            Her Name
+        </span>
+
     </footer>
+
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
