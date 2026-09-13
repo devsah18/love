@@ -4,9 +4,9 @@
 
 const CONFIG = {
 
-    herName: "Her Name",
+    herName: "Chandani",
 
-    yourName: "Your Name"
+    yourName: "Dev"
 
 };
 
