@@ -33,33 +33,48 @@ html {
 
 
 body {
+    background: linear-gradient(
+        135deg,
+        #12000f,
+        #3b001f,
+        #8b123d
+    );
 
-    min-height: 100vh;
+    color: #ffffff;
+}
 
-    background:
+.screen {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 
-        radial-gradient(
-            circle at 20% 10%,
-            rgba(232,161,176,0.13),
-            transparent 35%
-        ),
+button {
+    background: #ff4d6d;
+    color: #ffffff;
+    border: none;
+}
 
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(232,201,139,0.08),
-            transparent 35%
-        ),
+button:hover {
+    background: #ff1744;
+}
 
-        #0b0b12;
+#yesBtn {
+    background: #e63946;
+}
 
-    color: #f7f3f0;
+#noBtn {
+    background: #343a40;
+}
 
-    font-family:
-        "DM Sans",
-        sans-serif;
+h1,
+h2,
+h3 {
+    color: #ffd6e0;
+}
 
-    overflow-x: hidden;
-
+p {
+    color: #ffe5ec;
 }
 
 
