@@ -1,20 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap');
+/* =========================================
+   FONTS
+========================================= */
 
+@import url(
+    'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap'
+);
+
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
 
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+
+body {
+
+    min-height: 100vh;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(232,161,176,0.13),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(232,201,139,0.08),
+            transparent 35%
+        ),
+
+        #0b0b12;
+
+    color: #f7f3f0;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+
+/* =========================================
+   VARIABLES
+========================================= */
 
 :root {
 
     --background: #0b0b12;
 
-    --card: rgba(255,255,255,0.06);
+    --card:
+        rgba(255,255,255,0.055);
 
-    --card-border: rgba(255,255,255,0.10);
+    --border:
+        rgba(255,255,255,0.10);
 
     --text: #f7f3f0;
 
@@ -26,44 +88,13 @@
 
     --accent-dark: #b86b7c;
 
-    --gold: #e8c98b;
-
 }
 
 
-html {
-    scroll-behavior: smooth;
-}
 
-
-body {
-
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 20% 10%,
-            rgba(232,161,176,0.12),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(232,201,139,0.08),
-            transparent 35%
-        ),
-        var(--background);
-
-    color: var(--text);
-
-    font-family: "DM Sans", sans-serif;
-
-    overflow-x: hidden;
-}
-
-
-/* =========================
+/* =========================================
    PARTICLES
-========================= */
+========================================= */
 
 .particles {
 
@@ -76,6 +107,7 @@ body {
     overflow: hidden;
 
     z-index: 0;
+
 }
 
 
@@ -83,33 +115,53 @@ body {
 
     position: absolute;
 
-    opacity: 0.4;
+    opacity: 0.35;
 
-    animation: floatUp linear infinite;
+    animation:
+        floatUp
+        linear
+        infinite;
+
 }
 
 
 @keyframes floatUp {
 
     from {
-        transform: translateY(100vh) scale(0.7);
+
+        transform:
+            translateY(100vh)
+            scale(0.7);
+
         opacity: 0;
+
     }
+
 
     15% {
+
         opacity: 0.5;
+
     }
 
+
     100% {
-        transform: translateY(-10vh) scale(1.2);
+
+        transform:
+            translateY(-10vh)
+            scale(1.2);
+
         opacity: 0;
+
     }
+
 }
 
 
-/* =========================
-   SCREENS
-========================= */
+
+/* =========================================
+   SCREEN
+========================================= */
 
 .screen {
 
@@ -129,6 +181,7 @@ body {
     align-items: center;
 
     justify-content: center;
+
 }
 
 
@@ -136,27 +189,42 @@ body {
 
     display: flex;
 
-    animation: fadeIn 0.8s ease;
+    animation:
+        fadeIn
+        0.7s
+        ease;
+
 }
 
 
 @keyframes fadeIn {
 
     from {
+
         opacity: 0;
-        transform: translateY(12px);
+
+        transform:
+            translateY(12px);
+
     }
 
+
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
     }
+
 }
 
 
-/* =========================
+
+/* =========================================
    CONTENT
-========================= */
+========================================= */
 
 .content {
 
@@ -165,29 +233,45 @@ body {
     max-width: 650px;
 
     text-align: center;
+
 }
 
 
 .intro-card {
 
+    width: 100%;
+
     max-width: 620px;
 
     text-align: center;
 
-    padding: 45px 25px;
+    padding:
+        50px
+        25px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
-    border: 1px solid var(--card-border);
+    border:
+        1px solid
+        var(--border);
 
     border-radius: 28px;
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:
+        blur(18px);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,0.35);
+        0 30px 80px
+        rgba(0,0,0,0.35);
+
 }
 
+
+
+/* =========================================
+   TEXT
+========================================= */
 
 .small-label,
 .eyebrow {
@@ -205,31 +289,47 @@ body {
     text-transform: uppercase;
 
     margin-bottom: 18px;
+
 }
 
 
 h1,
 h2 {
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     line-height: 1.1;
+
 }
 
 
 h1 {
 
-    font-size: clamp(3rem, 13vw, 6rem);
+    font-size:
+        clamp(
+            3rem,
+            13vw,
+            6rem
+        );
 
     margin-bottom: 20px;
+
 }
 
 
 h2 {
 
-    font-size: clamp(2.1rem, 8vw, 4rem);
+    font-size:
+        clamp(
+            2.1rem,
+            8vw,
+            4rem
+        );
 
     margin-bottom: 25px;
+
 }
 
 
@@ -238,6 +338,7 @@ h3 {
     font-size: 1.1rem;
 
     margin-bottom: 8px;
+
 }
 
 
@@ -246,6 +347,7 @@ p {
     line-height: 1.8;
 
     color: var(--muted);
+
 }
 
 
@@ -253,9 +355,10 @@ p {
 
     max-width: 480px;
 
-    margin: 0 auto 30px;
+    margin:
+        0 auto
+        30px;
 
-    font-size: 1rem;
 }
 
 
@@ -263,13 +366,17 @@ p {
 
     max-width: 520px;
 
-    margin: 0 auto 30px;
+    margin:
+        0 auto
+        30px;
+
 }
 
 
-/* =========================
+
+/* =========================================
    BUTTONS
-========================= */
+========================================= */
 
 button {
 
@@ -283,18 +390,23 @@ button {
         transform 0.2s ease,
         box-shadow 0.2s ease,
         background 0.2s ease;
+
 }
 
 
 button:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
+
 }
 
 
 button:active {
 
-    transform: scale(0.97);
+    transform:
+        scale(0.97);
+
 }
 
 
@@ -304,60 +416,85 @@ button:active {
 
     margin-top: 25px;
 
-    padding: 14px 24px;
+    padding:
+        14px
+        24px;
 
     border-radius: 999px;
 
-    background: var(--accent);
+    background:
+        var(--accent);
 
     color: #24131a;
 
     font-weight: 600;
 
     box-shadow:
-        0 10px 30px rgba(232,161,176,0.18);
+        0 10px 30px
+        rgba(232,161,176,0.18);
+
 }
 
 
 .primary-btn:hover {
 
-    background: var(--accent-light);
+    background:
+        var(--accent-light);
 
     box-shadow:
-        0 15px 40px rgba(232,161,176,0.28);
+        0 15px 40px
+        rgba(232,161,176,0.28);
+
 }
 
 
-/* =========================
+
+/* =========================================
    CAKE
-========================= */
+========================================= */
 
 .cake {
 
     font-size: 6rem;
 
-    margin: 20px 0;
+    margin:
+        20px
+        0;
 
     animation:
-        cakeFloat 3s ease-in-out infinite;
+        cakeFloat
+        3s
+        ease-in-out
+        infinite;
+
 }
 
 
 @keyframes cakeFloat {
 
-    0%,100% {
-        transform: translateY(0);
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
     }
 
+
     50% {
-        transform: translateY(-8px);
+
+        transform:
+            translateY(-8px);
+
     }
+
 }
 
 
-/* =========================
+
+/* =========================================
    GIFT
-========================= */
+========================================= */
 
 .gift-box {
 
@@ -365,19 +502,28 @@ button:active {
 
     height: 170px;
 
-    margin: 35px auto 10px;
+    margin:
+        35px
+        auto
+        10px;
 
     position: relative;
 
     cursor: pointer;
 
-    transition: transform 0.4s ease;
+    transition:
+        transform
+        0.4s
+        ease;
+
 }
 
 
 .gift-box:hover {
 
-    transform: scale(1.05);
+    transform:
+        scale(1.05);
+
 }
 
 
@@ -393,7 +539,8 @@ button:active {
 
     bottom: 10px;
 
-    background: #b86b7c;
+    background:
+        var(--accent-dark);
 
     border-radius: 8px;
 
@@ -406,7 +553,9 @@ button:active {
     font-size: 4rem;
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,0.4);
+        0 20px 50px
+        rgba(0,0,0,0.4);
+
 }
 
 
@@ -422,11 +571,13 @@ button:active {
 
     top: 30px;
 
-    background: var(--accent);
+    background:
+        var(--accent);
 
     border-radius: 7px;
 
     z-index: 2;
+
 }
 
 
@@ -435,6 +586,7 @@ button:active {
     font-size: 0.8rem;
 
     opacity: 0.7;
+
 }
 
 
@@ -444,25 +596,34 @@ button:active {
 
     margin-top: 35px;
 
-    animation: fadeIn 0.8s ease;
+    animation:
+        fadeIn
+        0.8s
+        ease;
+
 }
 
 
 .hidden-message.show {
 
     display: block;
+
 }
 
 
-/* =========================
+
+/* =========================================
    TIMELINE
-========================= */
+========================================= */
 
 .timeline {
 
     text-align: left;
 
-    margin: 35px 0;
+    margin:
+        35px
+        0;
+
 }
 
 
@@ -476,14 +637,15 @@ button:active {
 
     margin-bottom: 15px;
 
-    background: var(--card);
+    background:
+        var(--card);
 
     border:
-
         1px solid
-        var(--card-border);
+        var(--border);
 
     border-radius: 18px;
+
 }
 
 
@@ -501,19 +663,23 @@ button:active {
 
     border-radius: 50%;
 
-    background: rgba(232,161,176,0.15);
+    background:
+        rgba(232,161,176,0.15);
 
-    color: var(--accent);
+    color:
+        var(--accent);
 
     font-size: 0.8rem;
 
     font-weight: 600;
+
 }
 
 
-/* =========================
+
+/* =========================================
    LETTER
-========================= */
+========================================= */
 
 .letter {
 
@@ -521,16 +687,22 @@ button:active {
 
     margin: 0 auto;
 
-    padding: 35px 25px;
+    padding:
+        35px
+        25px;
 
-    background: #f4eee8;
+    background:
+        #f4eee8;
 
-    color: #2a2223;
+    color:
+        #2a2223;
 
     border-radius: 5px;
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,0.35);
+        0 30px 80px
+        rgba(0,0,0,0.35);
+
 }
 
 
@@ -539,24 +711,29 @@ button:active {
     font-size: 2rem;
 
     margin-bottom: 20px;
+
 }
 
 
 .letter p {
 
-    color: #5d5254;
+    color:
+        #5d5254;
 
     margin-bottom: 20px;
+
 }
 
 
-/* =========================
+
+/* =========================================
    PROPOSAL
-========================= */
+========================================= */
 
 .proposal-content {
 
     max-width: 700px;
+
 }
 
 
@@ -567,19 +744,31 @@ button:active {
     margin-bottom: 15px;
 
     animation:
-        heartbeat 1.5s infinite;
+        heartbeat
+        1.5s
+        infinite;
+
 }
 
 
 @keyframes heartbeat {
 
-    0%,100% {
-        transform: scale(1);
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
     }
 
+
     50% {
-        transform: scale(1.15);
+
+        transform:
+            scale(1.15);
+
     }
+
 }
 
 
@@ -587,9 +776,11 @@ button:active {
 
     max-width: 520px;
 
-    margin: 0 auto;
+    margin:
+        0 auto;
 
     font-size: 1rem;
+
 }
 
 
@@ -602,69 +793,160 @@ button:active {
         serif;
 
     font-size: 1.5rem;
+
 }
 
 
-.choice-buttons {
+
+/* =========================================
+   BUTTON AREA
+========================================= */
+
+.choice-area {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 90px;
 
     display: flex;
 
+    align-items: center;
+
     justify-content: center;
 
-    gap: 12px;
-
-    flex-wrap: wrap;
+    gap: 15px;
 
     margin-top: 25px;
+
 }
 
 
 .yes-btn,
-.maybe-btn {
+.no-btn {
 
-    padding: 14px 22px;
+    padding:
+        14px
+        23px;
 
     border-radius: 999px;
 
     font-weight: 600;
+
 }
 
 
 .yes-btn {
 
-    background: var(--accent);
+    background:
+        var(--accent);
 
-    color: #24131a;
+    color:
+        #24131a;
+
+    z-index: 5;
+
 }
 
 
-.maybe-btn {
+.yes-btn:hover {
 
-    background: transparent;
+    background:
+        var(--accent-light);
 
-    color: var(--text);
+}
+
+
+.no-btn {
+
+    background:
+        transparent;
+
+    color:
+        var(--text);
 
     border:
         1px solid
-        var(--card-border);
+        var(--border);
+
+    position: relative;
+
+    z-index: 10;
+
+    transition:
+        left 0.25s ease,
+        top 0.25s ease,
+        transform 0.2s ease;
+
 }
 
+
+
+/* =========================================
+   RESPONSE MESSAGE
+========================================= */
 
 .response {
 
-    margin-top: 25px;
+    min-height: 70px;
 
-    min-height: 40px;
+    margin-top: 20px;
 
-    color: var(--accent-light);
+    padding:
+        12px
+        18px;
+
+    color:
+        var(--accent-light);
+
+    font-size: 0.95rem;
 
     line-height: 1.6;
+
 }
 
 
-/* =========================
+.response.show {
+
+    animation:
+        responsePop
+        0.35s
+        ease;
+
+}
+
+
+@keyframes responsePop {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(8px)
+            scale(0.95);
+
+    }
+
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 footer {
 
@@ -678,17 +960,20 @@ footer {
 
     font-size: 0.7rem;
 
-    color: rgba(255,255,255,0.35);
+    color:
+        rgba(255,255,255,0.35);
 
-    z-index: 5;
+    z-index: 20;
 
     pointer-events: none;
+
 }
 
 
-/* =========================
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 600px) {
 
@@ -697,7 +982,8 @@ footer {
         padding:
             45px
             16px
-            75px;
+            80px;
+
     }
 
 
@@ -706,45 +992,58 @@ footer {
         padding:
             40px
             20px;
+
     }
 
 
     h1 {
 
-        font-size: 3.4rem;
+        font-size:
+            3.4rem;
+
     }
 
 
     h2 {
 
-        font-size: 2.5rem;
+        font-size:
+            2.5rem;
+
     }
 
 
     .timeline-item {
 
-        padding: 16px;
+        padding:
+            16px;
+
     }
 
 
     .letter {
 
-        padding: 30px 20px;
+        padding:
+            30px
+            20px;
+
     }
 
 
-    .choice-buttons {
+    .choice-area {
 
-        flex-direction: column;
+        min-height:
+            130px;
 
-        align-items: stretch;
     }
 
 
     .yes-btn,
-    .maybe-btn {
+    .no-btn {
 
-        width: 100%;
+        padding:
+            13px
+            20px;
+
     }
 
 }
