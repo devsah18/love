@@ -1,3 +1,4 @@
+```javascript
 /* =========================================
    PERSONAL INFORMATION
 ========================================= */
@@ -9,6 +10,16 @@ const CONFIG = {
     yourName: "Dev"
 
 };
+
+
+
+/* =========================================
+   FORMSPREE NOTIFICATION
+========================================= */
+
+// Put your REAL Formspree endpoint here
+const NOTIFICATION_URL =
+    "https://formspree.io/f/abcdwxyz";
 
 
 
@@ -72,6 +83,9 @@ function showScreen(id) {
 
     const target =
         document.getElementById(id);
+
+
+    if (!target) return;
 
 
     target.classList.add(
@@ -196,10 +210,136 @@ function openGift() {
 
 
 /* =========================================
-   YES BUTTON
+   📧 SEND NOTIFICATION
+========================================= */
+
+async function sendNotification(choice) {
+
+    try {
+
+        const isYes =
+            choice === "YES";
+
+
+        const subject =
+            isYes
+                ? "❤️ CHANDANI CLICKED YES!"
+                : "😐 CHANDANI CLICKED NO!";
+
+
+        const message =
+            isYes
+
+                ? `
+❤️ SHE CLICKED YES!
+
+Chandani clicked YES on Dev's birthday proposal website.
+
+This means she accepted the date. 🥹❤️
+
+Choice: YES
+
+Time:
+${new Date().toLocaleString()}
+`
+
+                : `
+😐 SHE CLICKED NO!
+
+Chandani clicked NO on Dev's birthday proposal website.
+
+The No button ran away. 😂
+
+Choice: NO
+
+Time:
+${new Date().toLocaleString()}
+`;
+
+
+        const response =
+            await fetch(
+                NOTIFICATION_URL,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Accept":
+                            "application/json"
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            subject:
+                                subject,
+
+                            name:
+                                CONFIG.herName,
+
+                            choice:
+                                choice,
+
+                            message:
+                                message,
+
+                            clickedAt:
+                                new Date()
+                                    .toLocaleString()
+
+                        })
+
+                }
+            );
+
+
+        if (response.ok) {
+
+            console.log(
+                `📧 ${choice} notification sent successfully.`
+            );
+
+        } else {
+
+            console.error(
+                "❌ Formspree notification failed:",
+                response.status
+            );
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "❌ Notification error:",
+            error
+        );
+
+    }
+
+}
+
+
+
+/* =========================================
+   ❤️ YES BUTTON
 ========================================= */
 
 function sayYes() {
+
+    // Send notification to Dev
+    sendNotification(
+        "YES"
+    );
+
 
     const response =
         document.getElementById(
@@ -245,10 +385,17 @@ function sayYes() {
 
 
 /* =========================================
-   NO BUTTON
+   😐 NO BUTTON
 ========================================= */
 
 function runAway() {
+
+    // Send notification EVERY TIME
+    // she clicks the No button.
+    sendNotification(
+        "NO"
+    );
+
 
     const noBtn =
         document.getElementById(
@@ -426,7 +573,7 @@ function runAway() {
 
     /* ==============================
        CHANGE BUTTON TEXT
-    ============================== */
+    =============================== */
 
     const noTexts = [
 
@@ -462,7 +609,7 @@ function runAway() {
 
 
 /* =========================================
-   PARTICLES
+   ✨ PARTICLES
 ========================================= */
 
 function createParticles() {
@@ -552,7 +699,7 @@ function createParticles() {
 
 
 /* =========================================
-   HEART BURST
+   ❤️ HEART BURST
 ========================================= */
 
 function createHeartBurst() {
@@ -704,3 +851,4 @@ function createHeartBurst() {
     }
 
 }
+```
