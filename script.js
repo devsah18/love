@@ -3,34 +3,162 @@
 ========================================= */
 
 const CONFIG = {
-
     herName: "Chandani",
-
     yourName: "Dev"
-
 };
 
 
 /* =========================================
-   📧 SEND NOTIFICATION
+   FORMSPREE NOTIFICATION URL
+========================================= */
+
+const NOTIFICATION_URL =
+    "https://formspree.io/f/meaqbgyo";
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const introName = document.getElementById("introName");
+    const birthdayName = document.getElementById("birthdayName");
+    const proposalName = document.getElementById("proposalName");
+    const footerName = document.getElementById("footerName");
+
+    if (introName) {
+        introName.textContent = CONFIG.herName;
+    }
+
+    if (birthdayName) {
+        birthdayName.textContent = CONFIG.herName;
+    }
+
+    if (proposalName) {
+        proposalName.textContent = CONFIG.herName;
+    }
+
+    if (footerName) {
+        footerName.textContent = CONFIG.yourName;
+    }
+
+    createParticles();
+
+});
+
+
+/* =========================================
+   SCREEN NAVIGATION
+========================================= */
+
+function showScreen(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+            screen.classList.remove("active");
+        });
+
+    const target = document.getElementById(id);
+
+    if (!target) {
+        console.error("Screen not found:", id);
+        return;
+    }
+
+    target.classList.add("active");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================
+   SURPRISE FLOW
+========================================= */
+
+function openSurprise() {
+
+    showScreen("birthday");
+
+}
+
+
+function showGift() {
+
+    showScreen("gift");
+
+}
+
+
+function showStory() {
+
+    showScreen("story");
+
+}
+
+
+function showSecret() {
+
+    showScreen("secret");
+
+}
+
+
+function showProposal() {
+
+    showScreen("proposal");
+
+    createHeartBurst();
+
+}
+
+
+/* =========================================
+   GIFT
+========================================= */
+
+function openGift() {
+
+    const box = document.getElementById("giftBox");
+    const message = document.getElementById("giftMessage");
+    const hint = document.getElementById("giftHint");
+
+    if (!box || !message || !hint) {
+        return;
+    }
+
+    box.style.transform = "scale(0.8) rotate(-5deg)";
+
+    setTimeout(() => {
+
+        box.style.display = "none";
+        hint.style.display = "none";
+        message.classList.add("show");
+
+    }, 400);
+
+}
+
+
+/* =========================================
+   SEND EMAIL NOTIFICATION
 ========================================= */
 
 async function sendNotification(choice) {
 
-    const isYes =
-        choice === "YES";
+    const isYes = choice === "YES";
 
+    const subject = isYes
+        ? "❤️ Chandani clicked YES!"
+        : "😐 Chandani clicked NO!";
 
-    const subject =
-        isYes
-            ? "❤️ Chandani clicked YES!"
-            : "😐 Chandani clicked NO!";
-
-
-    const message =
-        isYes
-
-            ? `
+    const message = isYes
+        ? `
 Chandani clicked YES on Dev's birthday proposal website.
 
 Choice: YES ❤️
@@ -38,8 +166,7 @@ Choice: YES ❤️
 Time:
 ${new Date().toLocaleString()}
 `
-
-            : `
+        : `
 Chandani clicked NO on Dev's birthday proposal website.
 
 Choice: NO 😐
@@ -48,46 +175,33 @@ Time:
 ${new Date().toLocaleString()}
 `;
 
-
     try {
 
-        const result =
-            await fetch(
-                NOTIFICATION_URL,
-                {
+        const result = await fetch(
+            NOTIFICATION_URL,
+            {
+                method: "POST",
 
-                    method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
 
-                    headers: {
+                body: JSON.stringify({
 
-                        "Content-Type":
-                            "application/json",
+                    subject: subject,
 
-                        "Accept":
-                            "application/json"
+                    name: CONFIG.herName,
 
-                    },
+                    choice: choice,
 
-                    body:
-                        JSON.stringify({
+                    message: message,
 
-                            subject: subject,
+                    clickedAt: new Date().toLocaleString()
 
-                            name: CONFIG.herName,
-
-                            choice: choice,
-
-                            message: message,
-
-                            clickedAt:
-                                new Date()
-                                    .toLocaleString()
-
-                        })
-
-                }
-            );
-
+                })
+            }
+        );
 
         if (result.ok) {
 
@@ -104,9 +218,7 @@ ${new Date().toLocaleString()}
 
         }
 
-    }
-
-    catch (error) {
+    } catch (error) {
 
         console.error(
             "❌ Notification failed:",
@@ -118,204 +230,22 @@ ${new Date().toLocaleString()}
 }
 
 
-
-/* =========================================
-   INITIALIZE
-========================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        document
-            .getElementById("introName")
-            .textContent =
-            CONFIG.herName;
-
-
-        document
-            .getElementById("birthdayName")
-            .textContent =
-            CONFIG.herName;
-
-
-        document
-            .getElementById("proposalName")
-            .textContent =
-            CONFIG.herName;
-
-
-        document
-            .getElementById("footerName")
-            .textContent =
-            CONFIG.herName;
-
-
-        createParticles();
-
-    }
-);
-
-
-
-/* =========================================
-   SCREEN NAVIGATION
-========================================= */
-
-function showScreen(id) {
-
-    document
-        .querySelectorAll(".screen")
-        .forEach(
-            screen => {
-
-                screen.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-
-    const target =
-        document.getElementById(id);
-
-
-    target.classList.add(
-        "active"
-    );
-
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-}
-
-
-
-/* =========================================
-   SURPRISE FLOW
-========================================= */
-
-function openSurprise() {
-
-    showScreen(
-        "birthday"
-    );
-
-}
-
-
-function showGift() {
-
-    showScreen(
-        "gift"
-    );
-
-}
-
-
-function showStory() {
-
-    showScreen(
-        "story"
-    );
-
-}
-
-
-function showSecret() {
-
-    showScreen(
-        "secret"
-    );
-
-}
-
-
-function showProposal() {
-
-    showScreen(
-        "proposal"
-    );
-
-    createHeartBurst();
-
-}
-
-
-
-/* =========================================
-   GIFT
-========================================= */
-
-function openGift() {
-
-    const box =
-        document.getElementById(
-            "giftBox"
-        );
-
-
-    const message =
-        document.getElementById(
-            "giftMessage"
-        );
-
-
-    const hint =
-        document.getElementById(
-            "giftHint"
-        );
-
-
-    box.style.transform =
-        "scale(0.8) rotate(-5deg)";
-
-
-    setTimeout(
-        () => {
-
-            box.style.display =
-                "none";
-
-
-            hint.style.display =
-                "none";
-
-
-            message.classList.add(
-                "show"
-            );
-
-        },
-
-        400
-    );
-
-}
-
-
-
 /* =========================================
    YES BUTTON
 ========================================= */
 
 function sayYes() {
 
-    const response =
-        document.getElementById(
-            "response"
-        );
+    // Send YES notification
+    sendNotification("YES");
 
+    const response = document.getElementById("response");
+
+    if (!response) {
+        return;
+    }
 
     response.innerHTML = `
-
         <strong>
             ❤️ You said YES!
         </strong>
@@ -328,27 +258,17 @@ function sayYes() {
         <br><br>
 
         I'll see you on our date. ❤️
-
     `;
 
-
-    response.classList.remove(
-        "show"
-    );
-
+    response.classList.remove("show");
 
     void response.offsetWidth;
 
-
-    response.classList.add(
-        "show"
-    );
-
+    response.classList.add("show");
 
     createHeartBurst();
 
 }
-
 
 
 /* =========================================
@@ -357,28 +277,21 @@ function sayYes() {
 
 function runAway() {
 
-    const noBtn =
-        document.getElementById(
-            "noBtn"
-        );
+    // Send NO notification
+    sendNotification("NO");
+
+    const noBtn = document.getElementById("noBtn");
+    const area = document.getElementById("choiceArea");
+    const response = document.getElementById("response");
+
+    if (!noBtn || !area || !response) {
+        return;
+    }
 
 
-    const area =
-        document.getElementById(
-            "choiceArea"
-        );
-
-
-    const response =
-        document.getElementById(
-            "response"
-        );
-
-
-
-    /* ==============================
+    /* =====================================
        RANDOM MESSAGES
-    =============================== */
+    ===================================== */
 
     const messages = [
 
@@ -417,123 +330,75 @@ function runAway() {
     ];
 
 
-
-    /* ==============================
-       RANDOM MESSAGE
-    =============================== */
-
     const randomMessage =
         messages[
             Math.floor(
-                Math.random() *
-                messages.length
+                Math.random() * messages.length
             )
         ];
 
 
-    response.innerHTML =
-        randomMessage;
+    response.innerHTML = randomMessage;
 
-
-    response.classList.remove(
-        "show"
-    );
-
+    response.classList.remove("show");
 
     void response.offsetWidth;
 
-
-    response.classList.add(
-        "show"
-    );
+    response.classList.add("show");
 
 
-
-    /* ==============================
+    /* =====================================
        AREA SIZE
-    =============================== */
+    ===================================== */
 
-    const areaWidth =
-        area.clientWidth;
+    const areaWidth = area.clientWidth;
+    const areaHeight = area.clientHeight;
 
-
-    const areaHeight =
-        area.clientHeight;
-
-
-    const buttonWidth =
-        noBtn.offsetWidth;
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
 
 
-    const buttonHeight =
-        noBtn.offsetHeight;
-
-
-
-    /* ==============================
+    /* =====================================
        SAFE MOVEMENT
-    =============================== */
+    ===================================== */
 
     const padding = 5;
 
+    const maxX = Math.max(
+        padding,
+        areaWidth - buttonWidth - padding
+    );
 
-    const maxX =
-        Math.max(
-            padding,
-            areaWidth -
-            buttonWidth -
-            padding
-        );
-
-
-    const maxY =
-        Math.max(
-            padding,
-            areaHeight -
-            buttonHeight -
-            padding
-        );
-
+    const maxY = Math.max(
+        padding,
+        areaHeight - buttonHeight - padding
+    );
 
     const randomX =
         padding +
         Math.random() *
-        Math.max(
-            0,
-            maxX - padding
-        );
-
+        Math.max(0, maxX - padding);
 
     const randomY =
         padding +
         Math.random() *
-        Math.max(
-            0,
-            maxY - padding
-        );
+        Math.max(0, maxY - padding);
 
 
+    /* =====================================
+       MOVE NO BUTTON
+    ===================================== */
 
-    /* ==============================
-       MOVE BUTTON
-    =============================== */
+    noBtn.style.position = "absolute";
 
-    noBtn.style.position =
-        "absolute";
+    noBtn.style.left = `${randomX}px`;
 
-
-    noBtn.style.left =
-        `${randomX}px`;
+    noBtn.style.top = `${randomY}px`;
 
 
-    noBtn.style.top =
-        `${randomY}px`;
-
-
-
-    /* ==============================
-       CHANGE BUTTON TEXT
-    ============================== */
+    /* =====================================
+       CHANGE NO BUTTON TEXT
+    ===================================== */
 
     const noTexts = [
 
@@ -559,13 +424,11 @@ function runAway() {
     noBtn.textContent =
         noTexts[
             Math.floor(
-                Math.random() *
-                noTexts.length
+                Math.random() * noTexts.length
             )
         ];
 
 }
-
 
 
 /* =========================================
@@ -575,87 +438,51 @@ function runAway() {
 function createParticles() {
 
     const container =
-        document.getElementById(
-            "particles"
-        );
+        document.getElementById("particles");
 
+    if (!container) {
+        return;
+    }
 
     const symbols = [
-
         "♡",
-
         "✦",
-
         "·",
-
         "♥"
-
     ];
 
 
-    for (
-        let i = 0;
-        i < 35;
-        i++
-    ) {
+    for (let i = 0; i < 35; i++) {
 
         const particle =
-            document.createElement(
-                "span"
-            );
+            document.createElement("span");
 
-
-        particle.className =
-            "particle";
-
+        particle.className = "particle";
 
         particle.textContent =
             symbols[
                 Math.floor(
-                    Math.random() *
-                    symbols.length
+                    Math.random() * symbols.length
                 )
             ];
 
-
         particle.style.left =
-            Math.random() *
-            100 +
-            "%";
-
+            Math.random() * 100 + "%";
 
         particle.style.fontSize =
-            (
-                8 +
-                Math.random() *
-                16
-            ) +
-            "px";
-
+            8 + Math.random() * 16 + "px";
 
         particle.style.animationDuration =
-            (
-                7 +
-                Math.random() *
-                10
-            ) +
-            "s";
-
+            7 + Math.random() * 10 + "s";
 
         particle.style.animationDelay =
-            Math.random() *
-            8 +
-            "s";
+            Math.random() * 8 + "s";
 
-
-        container.appendChild(
-            particle
-        );
+        container.appendChild(particle);
 
     }
 
 }
-
 
 
 /* =========================================
@@ -665,71 +492,39 @@ function createParticles() {
 function createHeartBurst() {
 
     const symbols = [
-
         "❤️",
-
         "♡",
-
         "✨",
-
         "♥"
-
     ];
 
 
-    for (
-        let i = 0;
-        i < 18;
-        i++
-    ) {
+    for (let i = 0; i < 18; i++) {
 
         const heart =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         heart.textContent =
             symbols[
                 Math.floor(
-                    Math.random() *
-                    symbols.length
+                    Math.random() * symbols.length
                 )
             ];
 
+        heart.style.position = "fixed";
 
-        heart.style.position =
-            "fixed";
+        heart.style.left = "50%";
 
-
-        heart.style.left =
-            "50%";
-
-
-        heart.style.top =
-            "50%";
-
+        heart.style.top = "50%";
 
         heart.style.fontSize =
-            (
-                14 +
-                Math.random() *
-                20
-            ) +
-            "px";
+            14 + Math.random() * 20 + "px";
 
+        heart.style.zIndex = "100";
 
-        heart.style.zIndex =
-            "100";
+        heart.style.pointerEvents = "none";
 
-
-        heart.style.pointerEvents =
-            "none";
-
-
-        document.body.appendChild(
-            heart
-        );
+        document.body.appendChild(heart);
 
 
         const angle =
@@ -737,17 +532,13 @@ function createHeartBurst() {
             Math.PI *
             2;
 
-
         const distance =
             100 +
-            Math.random() *
-            200;
-
+            Math.random() * 200;
 
         const x =
             Math.cos(angle) *
             distance;
-
 
         const y =
             Math.sin(angle) *
@@ -757,19 +548,14 @@ function createHeartBurst() {
         heart.animate(
 
             [
-
                 {
-
                     transform:
                         "translate(-50%, -50%) scale(0.5)",
 
                     opacity: 1
-
                 },
 
-
                 {
-
                     transform:
                         `translate(
                             calc(-50% + ${x}px),
@@ -778,35 +564,26 @@ function createHeartBurst() {
                         scale(1.2)`,
 
                     opacity: 0
-
                 }
-
             ],
 
             {
-
                 duration:
                     1200 +
-                    Math.random() *
-                    700,
+                    Math.random() * 700,
 
                 easing:
                     "cubic-bezier(.2,.8,.3,1)"
-
             }
 
         );
 
 
-        setTimeout(
-            () => {
+        setTimeout(() => {
 
-                heart.remove();
+            heart.remove();
 
-            },
-
-            2000
-        );
+        }, 2000);
 
     }
 
